@@ -3,6 +3,7 @@
 @import "./styles/menu-item";
 @import "./styles/collection-item";
 @import "./styles/preview-collection";
+@import "./styles/header";
 
 html {
   box-sizing: border-box;
@@ -16,6 +17,25 @@ body {
   font-family: 'Open Sans Condensed', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+
+.app-wrapper {
+  min-height: 100vh; 
+  background-size: 185px;
+  // position: relative;
+}
+
+// .app-wrapper::before{
+//   background-color: rgba(white, 0.85);
+//   content: '';
+//   display: block;
+//   height: 100%;
+//   position: absolute;
+//   width: 100%;
+// }
+
+.app-body {
   padding: 20px 60px;
 }
 
@@ -27,6 +47,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+  text-decoration: none;
+  color: black
 }
 
 
