@@ -30,8 +30,11 @@ class SignIn extends PureComponent {
                 <form onSubmit={this.handleSubmit}>
                     <FormInput handleChange={this.handleChange} label="Email" type="email" required value={email} id="email" name="email" />
                     <FormInput handleChange={this.handleChange} label="Password" type="password" required value={password} id="password" name="password" />
-                    <CustomBtn type="submit">SIGN IN</CustomBtn>
-                    <CustomBtn onClick={signInWithGoogle}>Sign in with GOOGLE</CustomBtn>
+                    <div className="btns-sign-in-wrapper">
+                        <CustomBtn type="submit">SIGN IN</CustomBtn>
+                        <CustomBtn onClick={signInWithGoogle} isGoogleSignIn>Sign in with GOOGLE</CustomBtn>
+                    </div>
+                    
                 </form>
             </div>
         )
