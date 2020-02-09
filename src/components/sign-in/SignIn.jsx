@@ -2,19 +2,26 @@ import React, { PureComponent } from 'react'
 import FormInput from '../form-input/FormInput'
 import CustomBtn from '../custom-btn/CustomBtn';
 
-import { signInWithGoogle } from '../../firebase/firebaseUtils.js';
+import { auth, signInWithGoogle } from '../../firebase/firebaseUtils.js';
 
 class SignIn extends PureComponent {
     state = {
         email: '',
         password: '',
     }
-    handleSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault();
-        this.setState({
-            email: '',
-            password: '',
-        })
+        const {email, password} = this.state;
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            this.setState({
+                email: '',
+                password: '',
+            })
+        } catch(err) {
+            console.log(err)
+        }
+        
     }
 
     handleChange = ({ target }) => {
