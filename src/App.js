@@ -4,7 +4,7 @@ import ShopPage from './pages/shop/ShopPage';
 import { Route, BrowserRouter, Switch } from 'react-router-dom'
 import Header from './components/header/Header'
 import SignFormPage from './pages/sign-form/SignFormPage'
-import {auth} from './firebase/firebaseUtils';
+import {auth, createUserProfileDocument} from './firebase/firebaseUtils';
 
 class App extends PureComponent {
 
@@ -15,7 +15,9 @@ class App extends PureComponent {
   unsubscribeFromAuth = null
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => this.setState({currentUser: user}));
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+      createUserProfileDocument(user);
+    });
   }
 
   componentWillUnmount() {
