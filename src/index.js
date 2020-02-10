@@ -2,8 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
-serviceWorker.unregister();
+const jsx = (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+
+ReactDOM.render(jsx, document.getElementById('root'));
+
