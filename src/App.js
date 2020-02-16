@@ -40,8 +40,8 @@ class App extends PureComponent {
           <BrowserRouter>
             <Header />
             <Switch>
-              <Route path='/' exact component={() => <HomePage />} />
-              <Route path='/shop' component={() => <ShopPage />} />
+              <Route path='/' exact component={HomePage} />
+              <Route path='/shop' component={ShopPage} />
               <Route exact path='/signin' render={() => currentUser ? <Redirect to='/' /> : <SignFormPage />} />
             </Switch>
           </BrowserRouter>
