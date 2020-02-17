@@ -32,7 +32,6 @@ class App extends PureComponent {
 
   render() {
     const { currentUser } = this.props;
-    console.log(this.props)
     return (
       <div className="app-wrapper">
         <div className="app-body">
