@@ -19,14 +19,19 @@ export const AnimatedSwitch = ({ history, location, children, ...rest }) => {
 
 export default React.memo(AnimatedSwitch);
 
-export const TIMING = {
-    INSTANT: 0,
-    FAST: 200,
-    NORMAL: 400,
-    SLOW: 4000
-};
-
 export const ContextRouteAnimation = posed.div({
-    enter: { x: 0, opacity: 1, delay: 300, beforeChildren: true },
-    exit: { x: 50, opacity: 0 }
+    enter: {
+        x: 0, opacity: 1, delay: 400, beforeChildren: true, transition: {
+            type: "tween",
+            ease: "easeInOut",
+            duration: 400,
+        }
+    },
+    exit: {
+        x: 50, opacity: 0, transition: {
+            type: "tween",
+            ease: "easeInOut",
+            duration: 400,
+        }
+    }
 });

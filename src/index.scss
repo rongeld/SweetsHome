@@ -11,9 +11,11 @@
 @import "./styles/sign-in-sign-up";
 @import "./styles/cart-icon";
 @import "./styles/cart-dropdown";
+@import "./styles/shop-page";
 
 html {
   box-sizing: border-box;
+  overflow-y: overlay;
 }
 *, *:before, *:after {
   box-sizing: inherit;
