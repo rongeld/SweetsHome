@@ -24,18 +24,19 @@ const cartReducer = (state = INITIAL_STATE, action) => {
                     cartItems: [firstItem]
                 }
             }
+
             let indx = null;
+
             const isUsed = updatedItems.some((item, idx) => {
                 if (item.id === action.payload.id) {
                     indx = idx;
                     return true;
                 }
             });
-            if (!isUsed) {
+
+            isUsed ?
+                updatedItems[indx].amount = updatedItems[indx].amount + 1 :
                 updatedItems.push(firstItem);
-            } else {
-                updatedItems[indx].amount = updatedItems[indx].amount + 1
-            }
 
             return {
                 ...state,
