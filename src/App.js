@@ -1,12 +1,10 @@
 import React, { PureComponent } from 'react';
-import HomePage from './pages/homePage/HomePage';
-import ShopPage from './pages/shop/ShopPage';
-import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter} from 'react-router-dom'
 import Header from './components/header/Header'
-import SignFormPage from './pages/sign-form/SignFormPage'
 import { auth, createUserProfileDocument } from './firebase/firebaseUtils';
 import { connect } from 'react-redux'
 import { setCurrentUser } from './redux/user/user-actions';
+import Routes from './components/routes/routes'
 
 class App extends PureComponent {
   unsubscribeFromAuth = null
@@ -34,16 +32,13 @@ class App extends PureComponent {
 
   render() {
     const { currentUser } = this.props;
+    console.log(this.props)
     return (
       <div className="app-wrapper">
         <div className="app-body">
           <BrowserRouter>
             <Header />
-            <Switch>
-              <Route path='/' exact component={HomePage} />
-              <Route path='/shop' component={ShopPage} />
-              <Route exact path='/signin' render={() => currentUser ? <Redirect to='/' /> : <SignFormPage />} />
-            </Switch>
+            <Routes currentUser={currentUser} />
           </BrowserRouter>
         </div>
       </div>
