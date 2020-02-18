@@ -1,8 +1,8 @@
 import React from 'react'
 import CollectionItem from '../collection-item/CollectionItem'
 
-const PreviewCollection = ({title, items}) => (
-    <div className="collection-preview">
+const PreviewCollection = React.forwardRef(({title, items}, ref) => (
+    <div className="collection-preview" ref={ref}>
         <h1>{title.toUpperCase()}</h1>
         <div className="preview">
             {
@@ -12,6 +12,6 @@ const PreviewCollection = ({title, items}) => (
             }
         </div>
     </div>
-)
+))
 
 export default PreviewCollection

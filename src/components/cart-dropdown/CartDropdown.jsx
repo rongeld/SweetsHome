@@ -1,15 +1,42 @@
 import React from 'react'
-import Fade from 'react-reveal/Fade';
-import CustomButton from '../custom-btn/CustomBtn';
 
-const Cart = () => (
-    <Fade top duration={500}>
-        <div className="cart-dropdown">
-            <div className="cart-items">
-                <CustomButton>GO TO CHECKOUT</CustomButton>
-            </div>
+import CustomButton from '../custom-btn/CustomBtn';
+import CartItem from '../cart-item/CartItem';
+import { connect } from 'react-redux';
+import posed, { PoseGroup } from "react-pose";
+
+const Cart = ({ cartItems }) => (
+    <div className="cart-dropdown">
+        <div className="cart-items">
+            <PoseGroup animateOnMount>
+                {
+                    cartItems.map(item => <PosedComponent key={item.id} item={item} />)
+                }
+            </PoseGroup>
+            <CustomButton>GO TO CHECKOUT</CustomButton>
         </div>
-    </Fade>
+    </div>
 )
 
-export default Cart;
+const PosedComponent = posed(CartItem)({
+    enter: {
+        y: 0, opacity: 1, transition: {
+            type: "tween",
+            ease: "easeInOut",
+            duration: 400,
+        }
+    },
+    exit: {
+        y: -50, opacity: 0, transition: {
+            type: "tween",
+            ease: "easeInOut",
+            duration: 400,
+        }
+    }
+});
+
+const mapStateToProps = ({ cart: { cartItems } }) => ({
+    cartItems
+})
+
+export default connect(mapStateToProps)(Cart);
