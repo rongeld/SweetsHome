@@ -14,7 +14,7 @@ const Cart = ({ cartItems }) => (
                 cartItems.length ?
                     <PoseGroup animateOnMount>
                         {
-                            cartItems.map(item => <PosedComponent key={item.id} item={item} />)
+                            cartItems.map((item, i) => <PosedComponent i={i} key={item.id} item={item} />)
                         }
                     </PoseGroup>
                     :
@@ -28,14 +28,15 @@ const Cart = ({ cartItems }) => (
 
 const PosedComponent = posed(CartItem)({
     enter: {
-        y: 0, opacity: 1, transition: {
+        x: 0, opacity: 1, transition: {
             type: "tween",
             ease: "easeInOut",
             duration: 400,
-        }
+        },
+        delay: ({i}) => i * 100,
     },
     exit: {
-        y: -50, opacity: 0, transition: {
+        x: -50, opacity: 0, transition: {
             type: "tween",
             ease: "easeInOut",
             duration: 400,
