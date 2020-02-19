@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import PreviewCollection from '../../components/preview-collection/PreviewCollection'
+import posed, { PoseGroup } from "react-pose";
 
 const SHOP_DATA = [
   {
@@ -251,23 +252,36 @@ const SHOP_DATA = [
 
 
 class ShopPage extends PureComponent {
-    state = {
-        collections: SHOP_DATA
-    }
+  state = {
+    collections: SHOP_DATA
+  }
 
-    render() {
-      const { collections } = this.state;
-        return (
-            <div className="shop-page">
-              {
-                collections.map(({id, ...otherCollectionProps}) => (
-                  <PreviewCollection key={id} {...otherCollectionProps} />
-                ))
-              }
-            </div>
-        )
-    }
+  render() {
+    const { collections } = this.state;
+    return (
+      <div className="shop-page">
+        <PoseGroup animateOnMount>
+          {
+            collections.map(({ id, ...otherCollectionProps }, i) => (
+              <PosedComponent i={i} key={id} {...otherCollectionProps} />
+            ))
+          }
+        </PoseGroup>
+      </div>
+    )
+  }
 }
+
+const PosedComponent = posed(PreviewCollection)({
+  enter: {
+    opacity: 1,
+    delay: ({i}) => i * 500
+  },
+  exit: {
+    opacity: 0,
+    delay: ({i}) => i * 100
+  }
+});
 
 
 
