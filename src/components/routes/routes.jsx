@@ -6,36 +6,12 @@ import HomePage from '../../pages/homePage/HomePage';
 import ShopPage from '../../pages/shop/ShopPage';
 import SignFormPage from '../../pages/sign-form/SignFormPage'
 
-const routes = [
-  {
-    component: HomePage,
-    path: "/"
-  },
-  {
-    component: ShopPage,
-    path: "/shop"
-  },
-  {
-    path: "/signin",
-    render: true,
-    redirect: SignFormPage
-  },
-];
-
 const Routes = withRouter(({ location, currentUser }) => {
   return (
     <AnimatedSwitch location={location}>
-      {routes.map(route => {
-        return (
-          <Route
-            exact
-            key={route.path}
-            path={route.path}
-            component={route.component}
-            render={route.render ? (() => currentUser ? <Redirect to='/' /> : <route.redirect />) : null}
-          />
-        );
-      })}
+      <Route path='/' exact component={HomePage} key='HomePage' />
+      <Route path='/shop' component={ShopPage} key='ShopPage' />
+      <Route exact path='/signin' render={() => currentUser ? <Redirect to='/' /> : <SignFormPage />} key='SignFormPage' />
     </AnimatedSwitch>
   );
 });

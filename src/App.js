@@ -5,6 +5,8 @@ import { auth, createUserProfileDocument } from './firebase/firebaseUtils';
 import { connect } from 'react-redux'
 import { setCurrentUser } from './redux/user/user-actions';
 import Routes from './components/routes/routes'
+import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from './redux/user/user-selectors';
 
 class App extends PureComponent {
   unsubscribeFromAuth = null
@@ -45,6 +47,8 @@ class App extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ user: { currentUser } }) => ({ currentUser })
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+})
 
 export default connect(mapStateToProps, { setCurrentUser })(App);

@@ -5,15 +5,22 @@ import CartItem from '../cart-item/CartItem';
 import { connect } from 'react-redux';
 import posed, { PoseGroup } from "react-pose";
 import { selectCartItems } from '../../redux/cart/cart-selectors';
+import { createStructuredSelector } from 'reselect';
 
 const Cart = ({ cartItems }) => (
     <div className="cart-dropdown">
         <div className="cart-items">
-            <PoseGroup animateOnMount>
-                {
-                    cartItems.map(item => <PosedComponent key={item.id} item={item} />)
-                }
-            </PoseGroup>
+            {
+                cartItems.length ?
+                    <PoseGroup animateOnMount>
+                        {
+                            cartItems.map(item => <PosedComponent key={item.id} item={item} />)
+                        }
+                    </PoseGroup>
+                    :
+                    <span className="empty-message">Your cart is empty</span>
+            }
+
             <CustomButton>GO TO CHECKOUT</CustomButton>
         </div>
     </div>
@@ -36,8 +43,8 @@ const PosedComponent = posed(CartItem)({
     }
 });
 
-const mapStateToProps = state => ({
-    cartItems: selectCartItems(state)
+const mapStateToProps = createStructuredSelector({
+    cartItems: selectCartItems
 })
 
 export default connect(mapStateToProps)(Cart);

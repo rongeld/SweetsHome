@@ -5,9 +5,7 @@ import posed, { PoseGroup } from "react-pose";
 export const AnimatedSwitch = ({ history, location, children, ...rest }) => {
 
     return (
-        <PoseGroup
-            flipMove={false}
-        >
+        <PoseGroup flipMove={false}>
             <ContextRouteAnimation key={location.pathname}>
                 <Switch location={location} {...rest}>
                     {children}
