@@ -4,6 +4,7 @@ import CustomButton from '../custom-btn/CustomBtn';
 import CartItem from '../cart-item/CartItem';
 import { connect } from 'react-redux';
 import posed, { PoseGroup } from "react-pose";
+import { selectCartItems } from '../../redux/cart/cart-selectors';
 
 const Cart = ({ cartItems }) => (
     <div className="cart-dropdown">
@@ -35,8 +36,8 @@ const PosedComponent = posed(CartItem)({
     }
 });
 
-const mapStateToProps = ({ cart: { cartItems } }) => ({
-    cartItems
+const mapStateToProps = state => ({
+    cartItems: selectCartItems(state)
 })
 
 export default connect(mapStateToProps)(Cart);

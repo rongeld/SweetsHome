@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { toggleCartDropdown } from '../../redux/cart/cart-actions';
+import { selectCartItemsCount } from '../../redux/cart/cart-selectors';
 
 import { ReactComponent as ShopingIcon } from '../../assets/shopping-bag.svg'
 
@@ -11,13 +12,8 @@ const CartIcon = ({ toggleCartDropdown, counter }) => (
     </div>
 )
 
-const mapStateToProps = ({ cart: { cartItems } }) => {
-    let counter = 0;
-    cartItems.forEach(item => {
-        counter += item.amount
-    })
-
-    return { counter };
-};
+const mapStateToProps = state => ({
+    counter: selectCartItemsCount(state)
+})
 
 export default connect(mapStateToProps, { toggleCartDropdown })(CartIcon)
