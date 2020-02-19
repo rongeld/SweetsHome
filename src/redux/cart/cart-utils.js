@@ -1,20 +1,16 @@
 export const additemToCart = (cartItems, cartItemToAdd) => {
-    
     const cartItemsUpdated = [...cartItems];
-    let indx = null;
-
-    const isUsed = cartItemsUpdated.find((item, idx) => {
-        if (item.id === cartItemToAdd.id) {
-            indx = idx;
-            return true;
-        }
-    });
-    isUsed ?
-        cartItemsUpdated[indx].amount = cartItemsUpdated[indx].amount + 1 :
+    const isUsed = cartItemsUpdated.find(item => item.id === cartItemToAdd.id);
+    if (isUsed) {
+        const usedElementIndex = cartItemsUpdated[cartItemsUpdated.indexOf(isUsed)];
+        usedElementIndex.amount = usedElementIndex.amount + 1
+    } else {
         cartItemsUpdated.push({
             ...cartItemToAdd,
             amount: 1,
         });
-
+    }
+         
+    
     return cartItemsUpdated;
 }
