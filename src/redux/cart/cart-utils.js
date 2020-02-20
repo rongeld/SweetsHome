@@ -6,3 +6,4 @@ export const additemToCart = (cartItems, cartItemToAdd) => {
         cartItemsUpdated.push({ ...cartItemToAdd, amount: 1 });
     return cartItemsUpdated;
 }
+export const deleteItemFromCart = (cartItems, id) => cartItems.filter(item => item.id !== id);

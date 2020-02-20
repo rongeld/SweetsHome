@@ -3,7 +3,7 @@ import Directory from '../../components/directory/Directory';
 import posed from "react-pose";
 
 
-const HomePage = (props) => (
+const HomePage = () => (
     <PosedComponent className="homepage">
         <Directory />
     </PosedComponent>
