@@ -1,11 +1,30 @@
 import React from 'react'
 import Directory from '../../components/directory/Directory';
+import posed from "react-pose";
 
 
-const HomePge = (props) => (
-    <div className="homepage">
+const HomePage = (props) => (
+    <PosedComponent className="homepage">
         <Directory />
-    </div>
+    </PosedComponent>
 )
 
-export default HomePge;
+const PosedComponent = posed.div({
+    enter: {
+        x: 0, opacity: 1, transition: {
+            type: "tween",
+            ease: "easeInOut",
+            duration: 400,
+        },
+        delay: ({ i }) => i * 100,
+    },
+    exit: {
+        x: -50, opacity: 0, transition: {
+            type: "tween",
+            ease: "easeInOut",
+            duration: 400,
+        }
+    }
+});
+
+export default HomePage;

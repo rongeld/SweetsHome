@@ -6,8 +6,10 @@ import { connect } from 'react-redux';
 import posed, { PoseGroup } from "react-pose";
 import { selectCartItems } from '../../redux/cart/cart-selectors';
 import { createStructuredSelector } from 'reselect';
+import { withRouter } from 'react-router-dom';
+import { toggleCartDropdown } from '../../redux/cart/cart-actions';
 
-const Cart = ({ cartItems }) => (
+const Cart = ({ cartItems, history, toggleCartDropdown }) => (
     <div className="cart-dropdown">
         <div className="cart-items">
             {
@@ -21,7 +23,7 @@ const Cart = ({ cartItems }) => (
                     <span className="empty-message">Your cart is empty</span>
             }
 
-            <CustomButton>GO TO CHECKOUT</CustomButton>
+            <CustomButton onClick={() => { history.push('/checkout'); toggleCartDropdown() }}>GO TO CHECKOUT</CustomButton>
         </div>
     </div>
 )
@@ -33,7 +35,7 @@ const PosedComponent = posed(CartItem)({
             ease: "easeInOut",
             duration: 400,
         },
-        delay: ({i}) => i * 100,
+        delay: ({ i }) => i * 100,
     },
     exit: {
         x: -50, opacity: 0, transition: {
@@ -48,4 +50,4 @@ const mapStateToProps = createStructuredSelector({
     cartItems: selectCartItems
 })
 
-export default connect(mapStateToProps)(Cart);
+export default withRouter(connect(mapStateToProps, { toggleCartDropdown })(Cart));

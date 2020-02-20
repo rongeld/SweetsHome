@@ -51,8 +51,8 @@ class Directory extends PureComponent {
       <div className="directory-menu-wrapper">
         <div className="directory-menu">
           {
-            sections.map(({ id, ...otherSectionProps }, index) => (
-              <MenuItem key={id} {...otherSectionProps} index={index} />
+            sections.map(({ id, ...otherSectionProps }) => (
+              <MenuItem key={id} {...otherSectionProps} />
             ))
           }
         </div>
