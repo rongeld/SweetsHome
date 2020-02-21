@@ -3,7 +3,10 @@ import { connect } from 'react-redux'
 import CustomButton from '../custom-btn/CustomBtn';
 import { addCartItem } from '../../redux/cart/cart-actions';
 
-const CollectionItem = ({ id, name, price, imageUrl, addCartItem }) => (
+const CollectionItem = ({ item, addCartItem }) => {
+    const { name, price, imageUrl } = item;
+
+    return (
     <div className="collection-item">
         <div className="image" style={{ backgroundImage: `url(${imageUrl})` }}>
 
@@ -12,8 +15,9 @@ const CollectionItem = ({ id, name, price, imageUrl, addCartItem }) => (
             <span className="name">{name}</span>
             <span className="price">${price}</span>
         </div>
-        <CustomButton inverted onClick={() => addCartItem({id, name, price, imageUrl})}>Add to cart</CustomButton>
+        <CustomButton inverted onClick={() => addCartItem(item)}>Add to cart</CustomButton>
     </div>
-)
+    )
+}
 
 export default connect(null, { addCartItem })(CollectionItem);
