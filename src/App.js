@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { BrowserRouter} from 'react-router-dom'
 import Header from './components/header/Header'
 import { auth, createUserProfileDocument } from './firebase/firebaseUtils';
 import { connect } from 'react-redux'
@@ -33,14 +32,11 @@ class App extends PureComponent {
   }
 
   render() {
-    const { currentUser } = this.props;
     return (
       <div className="app-wrapper">
         <div className="app-body">
-          <BrowserRouter>
-            <Header />
-            <Routes currentUser={currentUser} />
-          </BrowserRouter>
+          <Header />
+          <Routes />
         </div>
       </div>
     )

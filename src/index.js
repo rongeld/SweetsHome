@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import store from './redux/store';
 
 
-const jsx = (
-    <Provider store={store}>
+ReactDOM.render(
+  <Provider store={store}>
+    <BrowserRouter>
       <App />
-    </Provider>
-  );
-
-ReactDOM.render(jsx, document.getElementById('root'));
-
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById('root')
+);

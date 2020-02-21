@@ -7,6 +7,7 @@ const INITIAL_STATE = {
 }
 
 const cartReducer = (state = INITIAL_STATE, action) => {
+    console.log('PIZDA')
     switch (action.type) {
         case CartActionTypes.TOGGLE_CART_HIDDEN:
             return {
@@ -14,6 +15,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
                 hidden: !state.hidden
             }
         case CartActionTypes.ADD_CART_ITEM:
+            console.log('object')
             return {
                 ...state,
                 cartItems: additemToCart(state.cartItems, action.payload),
