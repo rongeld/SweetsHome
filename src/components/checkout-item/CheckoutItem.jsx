@@ -10,7 +10,7 @@ const CheckoutItem = React.forwardRef(({ cartItem: { name, imageUrl, price, id, 
             </div>
             <span className="name">{name}</span>
             <span className="quantity">{amount}</span>
-            <span className="price">{price}</span>
+            <span className="price">${price}</span>
             <div className="remove-button" onClick={() => removeCartItem(id)}>&#10008;</div>
         </div>
     )

@@ -53,8 +53,9 @@ class SignUp extends PureComponent {
 
     render() {
         const { displayName, email, password, confirmPassword } = this.state;
+        const { innerRef } = this.props;
         return (
-            <div className="sign-up">
+            <div className="sign-up" ref={innerRef}>
                 <h2 className="title">I do not have an account</h2>
                 <span>Sign up with your email and password</span>
                 <form className="sign-up-form" onSubmit={this.handleSubmit}>
@@ -69,4 +70,6 @@ class SignUp extends PureComponent {
     }
 }
 
-export default SignUp;
+export default React.forwardRef((props, ref) => <SignUp
+    innerRef={ref} {...props}
+/>);
