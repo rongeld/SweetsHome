@@ -26,7 +26,7 @@ const Checkout = ({ cartItems, totalValue }) => {
                 </div>
             </div>
             <PoseGroup>
-                {cartItems.map((cartItem, i) => <PosedComponent key={cartItem.id} i={i} cartItem={cartItem} />)}
+                {cartItems.map((cartItem, i) => <PosedComponent key={cartItem.name} i={i} cartItem={cartItem} />)}
             </PoseGroup>
             
             <div className="total">
