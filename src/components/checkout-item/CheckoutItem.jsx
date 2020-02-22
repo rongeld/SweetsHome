@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import {
     removeCartItem,
     addCartItem,
+    decreaseAmountCartItem,
 } from '../../redux/cart/cart-actions';
 
-const CheckoutItem = React.forwardRef(({ cartItem, addCartItem, removeCartItem }, ref) => {
+const CheckoutItem = React.forwardRef(({ cartItem, addCartItem, removeCartItem, decreaseAmountCartItem }, ref) => {
     const { name, imageUrl, price, amount, id } = cartItem;
     return (
         <div className='checkout-item' ref={ref}>
@@ -15,7 +16,7 @@ const CheckoutItem = React.forwardRef(({ cartItem, addCartItem, removeCartItem }
             </div>
             <span className='name'>{name}</span>
             <span className='quantity'>
-                <div className='arrow'>
+                <div className='arrow' onClick={() => decreaseAmountCartItem(id)}>
                     &#10094;
                 </div>
                 <span className='value'>{amount}</span>
@@ -31,4 +32,4 @@ const CheckoutItem = React.forwardRef(({ cartItem, addCartItem, removeCartItem }
     );
 });
 
-export default connect(null, { removeCartItem, addCartItem }, null, { forwardRef: true })(CheckoutItem)
+export default connect(null, { removeCartItem, addCartItem, decreaseAmountCartItem }, null, { forwardRef: true })(CheckoutItem)

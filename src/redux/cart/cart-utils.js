@@ -1,23 +1,26 @@
 export const additemToCart = (cartItems, cartItemToAdd) => {
-    // const cartItemsUpdated = [...cartItems];
-    // const isUsed = cartItemsUpdated.find(item => item.id === cartItemToAdd.id);
-    // isUsed ?
-    //     cartItemsUpdated[cartItemsUpdated.indexOf(isUsed)].amount++ :
-    //     cartItemsUpdated.push({ ...cartItemToAdd, amount: 1 });
-    // return cartItemsUpdated;
-
     const existingCartItem = cartItems.find(
         cartItem => cartItem.id === cartItemToAdd.id
-      );
-    
-      if (existingCartItem) {
+    );
+
+    if (existingCartItem) {
         return cartItems.map(cartItem =>
-          cartItem.id === cartItemToAdd.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
+            cartItem.id === cartItemToAdd.id
+                ? { ...cartItem, amount: cartItem.amount + 1 }
+                : cartItem
         );
-      }
-    
-      return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
+    }
+
+    return [...cartItems, { ...cartItemToAdd, amount: 1 }];
 }
 export const deleteItemFromCart = (cartItems, id) => cartItems.filter(item => item.id !== id);
+
+export const decreaseAmountCartItemHandler = (cartItems, id) => cartItems.map(item => {
+    if (item.id === id && item.amount > 1) {
+        return {
+            ...item,
+            amount: item.amount - 1
+        }
+    }
+    return item;
+});
