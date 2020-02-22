@@ -1,38 +1,50 @@
 import React, { PureComponent } from 'react'
 import MenuItem from '../menuItem/MenuItem';
 
+import { ReactComponent as Cake } from '../../assets/cake.svg'
+import { ReactComponent as Pie } from '../../assets/pie.svg'
+import { ReactComponent as Cookie } from '../../assets/cookie.svg'
+import { ReactComponent as Donut } from '../../assets/donut.svg'
+import { ReactComponent as Croissant } from '../../assets/croissant.svg'
+import { ReactComponent as Cupcake } from '../../assets/cupcake.svg'
+
+
 const sections = [
   {
     title: 'cakes',
-    imageUrl: 'https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/carrot-cake.jpg',
+    ImageUrl: Cake,
     id: 1,
     linkUrl: 'shop/cakes'
   },
   {
     title: 'pies',
-    imageUrl: 'https://oldworldgardenfarms.com/wp-content/uploads/2019/07/featured-blueberry-pie.jpg',
+    ImageUrl: Pie,
     id: 2,
     linkUrl: 'shop/pies'
   },
   {
     title: 'cookies',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/2ChocolateChipCookies.jpg',
+    ImageUrl: Cookie,
     id: 3,
     linkUrl: 'shop/cookies'
   },
   {
-    title: 'donats',
-    imageUrl: 'https://i.pinimg.com/474x/b3/ff/20/b3ff20e0d435e0a095b8ec7875ea90cb.jpg',
-    size: 'large',
+    title: 'donuts',
+    ImageUrl: Donut,
     id: 4,
-    linkUrl: 'shop/donats'
+    linkUrl: 'shop/donuts'
   },
   {
     title: 'croissants',
-    imageUrl: 'https://bi.im-g.pl/im/d9/3d/17/z24370393Q,Croissanty-wbrew-pozorom-wcale-nie-tak-trudno-przy.jpg',
-    size: 'large',
+    ImageUrl: Croissant,
     id: 5,
     linkUrl: 'shop/croissants'
+  },
+  {
+    title: 'cupcakes',
+    ImageUrl: Cupcake,
+    id: 67,
+    linkUrl: 'shop/cupcakes'
   }
 ];
 

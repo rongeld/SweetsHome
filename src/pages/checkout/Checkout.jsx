@@ -26,7 +26,7 @@ const Checkout = ({ cartItems, totalValue }) => {
                 </div>
             </div>
             <PoseGroup>
-                {cartItems.map((cartItem, i) => <PosedComponent key={cartItem.name} i={i} cartItem={cartItem} />)}
+                {cartItems.map((cartItem, i) => <PosedComponent key={cartItem.id} i={i} cartItem={cartItem} />)}
             </PoseGroup>
             
             <div className="total">
@@ -48,7 +48,7 @@ const PosedComponent = posed(CheckoutItem)({
         delay: ({ i }) => i * 100,
     },
     exit: {
-        x: -50, opacity: 0, transition: {
+        x: 50, opacity: 0, transition: {
             type: "tween",
             ease: "easeInOut",
             duration: 400,

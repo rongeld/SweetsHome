@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, NavLink  } from 'react-router-dom';
 import { auth } from '../../firebase/firebaseUtils'
-import { ReactComponent as Logo } from '../../assets/crown.svg'
+import { ReactComponent as Logo } from '../../assets/logo.svg'
 import { connect } from 'react-redux'
 import CartIcon from '../cart-icon/CartIcon';
 import CartDropdown from '../cart-dropdown/CartDropdown'
@@ -12,15 +12,15 @@ import { selectCurrentUser } from '../../redux/user/user-selectors';
 const Header = ({ currentUser, hidden }) => (
     <div className="header" >
         <Link to="/">
-            <Logo className="logo" />
+            <Logo style={{width: '50px'}} className="logo" />
         </Link>
         <div className="options">
-            <Link to='/shop' className='option'>SHOP</Link>
-            <Link to='/contact' className='option'>CONTACT</Link>
+            <NavLink  to='/shop' className='option'>SHOP</NavLink >
+            <NavLink  to='/contact' className='option'>CONTACT</NavLink >
             {
                 currentUser ?
                     <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div> :
-                    <Link to='/signin' className='option'>SIGN IN</Link>
+                    <NavLink  to='/signin' className='option'>SIGN IN</NavLink >
             }
             <CartIcon />
         </div>

@@ -32,11 +32,12 @@ class App extends PureComponent {
   }
 
   render() {
+    const { currentUser } = this.props;
     return (
       <div className="app-wrapper">
         <div className="app-body">
           <Header />
-          <Routes />
+          <Routes currentUser={currentUser} />
         </div>
       </div>
     )
