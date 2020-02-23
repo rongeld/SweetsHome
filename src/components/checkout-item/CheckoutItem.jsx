@@ -12,7 +12,7 @@ const CheckoutItem = React.forwardRef(({ cartItem, addCartItem, removeCartItem, 
     return (
         <div className='checkout-item' ref={ref}>
             <div className='image-container'>
-                <img src={imageUrl} alt='item' />
+                <div className="checkout-item-image" style={{backgroundImage: `url(${imageUrl})`}} />
             </div>
             <span className='name'>{name}</span>
             <span className='quantity'>

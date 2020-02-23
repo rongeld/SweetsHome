@@ -11,9 +11,10 @@
       width: 23%;
       padding-right: 15px;
   
-      img {
-        width: 100%;
-        height: 100%;
+      .checkout-item-image {
+        background-size: cover;
+        height: 150px;
+        background-position: center;
       }
     }
     .name,

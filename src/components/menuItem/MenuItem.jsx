@@ -1,13 +1,14 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 
-const MenuItem = ({ title, ImageUrl, history, linkUrl, color }) => (
-    <div className='menu-item' onClick={() => history.push(`${linkUrl}`)}>
+const MenuItem = React.forwardRef(({ title, ImageUrl, linkUrl, color }, ref) => (
+    <Link className='menu-item' to={linkUrl} ref={ref}>
         <ImageUrl className="menu-item-image" />
         <div className="content" style={{backgroundColor: color }}>
             <h1 className="title">{title.toUpperCase()}</h1>
         </div>
-    </div>
-)
+    </Link>
+))
 
-export default withRouter(MenuItem);
+export default connect(null, null, null, { forwardRef: true })(MenuItem);
