@@ -6,6 +6,7 @@ import { setCurrentUser } from './redux/user/user-actions';
 import Routes from './components/routes/routes'
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user-selectors';
+import FlashOnAdd from './components/flash-on-add/FlashOnAdd';
 
 class App extends PureComponent {
   unsubscribeFromAuth = null
@@ -38,6 +39,7 @@ class App extends PureComponent {
         <div className="app-body">
           <Header />
           <Routes currentUser={currentUser} />
+          <FlashOnAdd />
         </div>
       </div>
     )
