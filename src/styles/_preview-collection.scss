@@ -11,6 +11,14 @@
     .preview {
       display: flex;
       justify-content: space-between;
+
+      .collection-item {
+        margin-right: 10px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
     }
   }
   

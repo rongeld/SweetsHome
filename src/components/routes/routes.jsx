@@ -12,7 +12,7 @@ const Routes = withRouter(({ location, currentUser }) => {
     <AnimatedSwitch location={location}>
       <Route path='/' exact component={HomePage} key='HomePage' />
       <Route path='/shop' component={ShopPage} key='ShopPage' />
-      <Route path='/checkout' component={Checkout} key='Checkout' />
+      <Route exact path='/checkout' component={Checkout} key='Checkout' />
       <Route exact path='/signin' render={() => currentUser ? <Redirect to='/' /> : <SignFormPage />} key='SignFormPage' />
     </AnimatedSwitch>
   );
