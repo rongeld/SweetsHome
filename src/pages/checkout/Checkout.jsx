@@ -4,6 +4,7 @@ import { createStructuredSelector } from 'reselect'
 import { selectCartItems, selectCartTotal } from '../../redux/cart/cart-selectors'
 import CheckoutItem from '../../components/checkout-item/CheckoutItem';
 import posed, { PoseGroup } from "react-pose";
+import StripeButton from '../../components/stripe-button/StripeButton'
 
 const Checkout = ({ cartItems, totalValue }) => {
     return (
@@ -30,9 +31,10 @@ const Checkout = ({ cartItems, totalValue }) => {
             </PoseGroup>
             
             <div className="total">
-                <span>
+                <div>
                     TOTAL: ${totalValue}
-                </span>
+                </div>
+                <StripeButton price={totalValue} />
             </div>
         </div>
     )
