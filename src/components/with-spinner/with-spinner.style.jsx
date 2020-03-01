@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Spinner from '../../assets/spinner.gif'
 
 export const SpinnerOverlay = styled.div`
   height: 60vh;
@@ -8,10 +9,10 @@ export const SpinnerOverlay = styled.div`
   align-items: center;
 `;
 
-export const SpinnerContainer = styled.img.attrs(
-  props => ({'src': props.img})
-)`
+export const SpinnerContainer = styled.div`
   display: inline-block;
   width: 100px;
   height: 100px;
+  background-image: url(${Spinner});
+  background-size: cover;
 `
