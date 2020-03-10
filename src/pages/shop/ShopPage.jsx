@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { fetchCollectionsStartAsync } from '../../redux/shop/shop-actions';
+import { fetchCollectionsStart } from '../../redux/shop/shop-actions';
 
 import CollectionOverviewContainer from '../../components/collections-overview/CollectionsOverviewContainer';
 import CollectionPageContainer from '../collection/CollectionPageContainer';
@@ -10,8 +10,8 @@ import CollectionPageContainer from '../collection/CollectionPageContainer';
 
 class ShopPage extends PureComponent {
   componentDidMount() {
-    const { fetchCollectionsStartAsync } = this.props;
-    fetchCollectionsStartAsync()
+    const { fetchCollectionsStart } = this.props;
+    fetchCollectionsStart()
   }
 
   render() {
@@ -25,4 +25,4 @@ class ShopPage extends PureComponent {
   }
 }
 
-export default connect(null, { fetchCollectionsStartAsync })(ShopPage);
+export default connect(null, { fetchCollectionsStart })(ShopPage);
