@@ -1,37 +1,12 @@
 import React, { PureComponent } from 'react';
 import Header from './components/header/Header'
-import { auth, createUserProfileDocument } from './firebase/firebaseUtils';
 import { connect } from 'react-redux'
-import { setCurrentUser } from './redux/user/user-actions';
 import Routes from './components/routes/routes'
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user-selectors';
 import FlashOnAdd from './components/flash-on-add/FlashOnAdd';
 
 class App extends PureComponent {
-  unsubscribeFromAuth = null
-
-  componentDidMount() {
-    const { setCurrentUser } = this.props;
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapShot => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data(),
-          })
-        })
-      } else {
-        setCurrentUser(userAuth)
-      }
-    });
-  }
-
-  componentWillUnmount() {
-    this.unsubscribeFromAuth()
-  }
-
   render() {
     const { currentUser } = this.props;
     return (
@@ -50,4 +25,4 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
 })
 
-export default connect(mapStateToProps, { setCurrentUser })(App);
+export default connect(mapStateToProps)(App);
