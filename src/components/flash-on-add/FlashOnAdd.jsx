@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import posed from "react-pose";
@@ -24,52 +24,37 @@ const Flash = posed(Baker)({
 	}
 });
 
-class FlashOnAdd extends PureComponent {
-	constructor(props) {
-		super(props);
+const FlashOnAdd = ({ counter }) => {
 
-		this.state = {
-			active: false,
-			counter: this.props.counter
+	const [active, setActive] = useState(false);
+	const [counterState, setCounterState] = useState(counter);
+
+	useEffect(() => {
+		if (!active) {
+			if (counter > counterState) {
+				setActive(true);
+			}
+			setCounterState(counter);
 		}
+	}, [setCounterState, counter, counterState, active]);
 
-		this.audioRef = React.createRef();
+	if (active) {
+		setTimeout(() => {
+			setActive(false);
+		}, 1500)
 	}
 
-	componentDidUpdate(prevProps, prevState) {
-		const { counter } = this.props;
-		const { counter: prevCounter } = prevState;
-		if (counter !== prevCounter) {
-			this.setState({
-				active: counter > prevCounter,
-				counter,
-			}, () => {
-				const { active } = this.state;
-				if (active) {
-					setTimeout(() => {
-						this.setState({
-							active: false
-						})
-					}, 1500)
-				}
-			});
-		}
-	}
+	const generateRandomPosition = () => Math.floor(Math.random() * 100) + 1;
 
-	generateRandomPosition = () => Math.floor(Math.random() * 100) + 1;
-
-	render() {
-		const { active } = this.state;
-		return (
-			<Fragment>
-				<Flash
-					className="flash"
-					pose={active ? 'visible' : 'hidden'}
-					x={this.generateRandomPosition()}
-				/>
-			</Fragment>
-		)
-	}
+	return (
+		<Fragment>
+			<Flash
+				className="flash"
+				pose={active ? 'visible' : 'hidden'}
+				x={generateRandomPosition()}
+			/>
+		</Fragment>
+	)
 }
 
 
