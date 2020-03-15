@@ -2,50 +2,30 @@ import React, { PureComponent } from 'react'
 
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-btn/CustomBtn'
-
-import { auth, createUserProfileDocument } from '../../firebase/firebaseUtils';
-
-
+import { connect } from 'react-redux';
+import { signUpStart } from '../../redux/user/user-actions'
 
 class SignUp extends PureComponent {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            displayName: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-        }
+    state = {
+        displayName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
     }
 
     handleSubmit = async event => {
         event.preventDefault();
         const { displayName, email, password, confirmPassword } = this.state;
-
+        const { signUpStart } = this.props;
         if (password !== confirmPassword) {
             alert('Password don`t match')
             return;
         }
-
-        try {
-            const { user } = await auth.createUserWithEmailAndPassword(email, password);
-            await createUserProfileDocument(user, { displayName });
-
-            this.setState({
-                displayName: '',
-                email: '',
-                password: '',
-                confirmPassword: '',
-            })
-        } catch (error) {
-            console.log(error)
-        }
-
+        signUpStart({ email, password, displayName });
     }
 
     handleChange = event => {
-        const {name, value} = event.target;
+        const { name, value } = event.target;
         this.setState({
             [name]: value
         })
@@ -70,6 +50,9 @@ class SignUp extends PureComponent {
     }
 }
 
-export default React.forwardRef((props, ref) => <SignUp
+
+const ConnectedSignUp = connect(null, { signUpStart })(SignUp);
+
+export default React.forwardRef((props, ref) => <ConnectedSignUp
     innerRef={ref} {...props}
 />);

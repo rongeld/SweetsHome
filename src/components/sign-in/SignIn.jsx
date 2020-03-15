@@ -41,8 +41,8 @@ class SignIn extends PureComponent {
     }
 }
 
-const ConnectedMyComponent = connect(null, { googleSignInStart, emailSignInStart })(SignIn);
+const ConnectedSignIn = connect(null, { googleSignInStart, emailSignInStart })(SignIn);
 
-export default React.forwardRef((props, ref) => <ConnectedMyComponent
+export default React.forwardRef((props, ref) => <ConnectedSignIn
     innerRef={ref} {...props}
 />);
