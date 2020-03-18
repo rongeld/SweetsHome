@@ -57,8 +57,9 @@ const FlashOnAdd = ({ counter }) => {
 	)
 }
 
-export default connect(
-	createStructuredSelector({
-		counter: selectCartItemsCount
-	})
-)(FlashOnAdd)
+
+const mapStateToProps = createStructuredSelector({
+	counter: selectCartItemsCount
+})
+
+export default connect(mapStateToProps)(FlashOnAdd)

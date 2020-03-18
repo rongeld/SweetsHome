@@ -1,28 +1,29 @@
 .menu-item {
-    min-width: 30%;
-    height: 240px;
-    flex: 1 1 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 7.5px 15px;
-    position: relative;
+  min-width: 30%;
+  height: 240px;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 7.5px 15px;
+  position: relative;
 
-    .menu-item-image {
-      width: 55%;
-      max-width: 180px;
-      min-width: 100px;
-      transition: all .3s ease;
+  .menu-item-image {
+    width: 55%;
+    max-width: 180px;
+    min-width: 100px;
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    & .background-image {
+      transform: scale(1.1);
+      transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     }
- 
-    &:hover {
-      cursor: pointer;
-    
-      & .background-image {
-        transform: scale(1.1);
-        transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
-      }
-    
+
+    @media screen and (min-width: 650px) {
       & .content {
         opacity: 0.9;
         bottom: 5px;
@@ -32,48 +33,52 @@
         transform: translateY(-24px);
       }
     }
-    
+  }
 
-  
-    &:first-child {
-      margin-right: 7.5px;
-    }
-  
-    &:last-child {
-      margin-left: 7.5px;
+  &:first-child {
+    margin-right: 7.5px;
+  }
+
+  &:last-child {
+    margin-left: 7.5px;
+  }
+
+  .background-image {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .content {
+    padding: 0 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #55c2e3;
+    opacity: 0;
+    bottom: 0;
+    border-radius: 20px;
+    width: auto;
+    position: absolute;
+    transition: all 0.3s ease;
+
+    @media screen and (max-width: 650px) {
+      opacity: 1;
+      transform: translateY(24px);
     }
 
-    .background-image {
-      width: 100%;
-      height: 100%;
-      background-position: center;
-      background-size: cover;
+    .title {
+      font-weight: bold;
+      padding: 5px;
+      font-size: 22px;
+      color: white;
     }
-  
-    .content {
-      padding: 0 25px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background-color: #55c2e3;
-      opacity: 0;
-      bottom: 0;
-      border-radius: 20px;
-      width: auto;
-      position: absolute;
-      transition: all .3s ease;
-  
-      .title {
-        font-weight: bold;
-        padding: 5px;
-        font-size: 22px;
-        color: white;
-      }
-  
-      .subtitle {
-        font-weight: lighter;
-        font-size: 16px;
-      }
+
+    .subtitle {
+      font-weight: lighter;
+      font-size: 16px;
     }
   }
+}
