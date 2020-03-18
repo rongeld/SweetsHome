@@ -46,6 +46,10 @@ body {
   padding: 20px 60px;
   max-width: 1200px;
   margin: 0 auto;
+
+  @media (max-width: 650px) {
+    padding: 15px;
+  }
 }
 
 h1,
@@ -71,4 +75,11 @@ code {
 a {
   text-decoration: none;
   color: black;
+}
+
+.collections-overview {
+
+  @media screen and (max-width: 400px) {
+    padding: 20px;
+  }
 }

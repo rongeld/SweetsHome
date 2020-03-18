@@ -4,6 +4,10 @@
     flex: 1;
     flex-direction: column;
 
+    @media screen and (max-width: 800px) {
+        margin: 0 0 40px 0;
+    }
+
     .title {
         margin: 10px 0;
     }
@@ -11,5 +15,9 @@
     .btns-sign-in-wrapper {
         display: flex;
         justify-content: space-between;
+
+        @media screen and (max-width: 800px) {
+            flex-direction: column;
+        }
     }
 }
