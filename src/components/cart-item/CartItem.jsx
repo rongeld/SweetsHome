@@ -12,4 +12,4 @@ const CartItem = React.forwardRef(({ item: { imageUrl, price, name, amount } }, 
     </div>
 ))
 
-export default CartItem
+export default React.memo(CartItem);
