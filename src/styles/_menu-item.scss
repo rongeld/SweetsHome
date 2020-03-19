@@ -8,6 +8,10 @@
   margin: 0 7.5px 15px;
   position: relative;
 
+  @media screen and (max-width: 530px) {
+    height: 200px;
+  }
+
   .menu-item-image {
     width: 55%;
     max-width: 180px;
