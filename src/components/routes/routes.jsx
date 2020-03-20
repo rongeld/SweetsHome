@@ -6,6 +6,7 @@ import HomePage from '../../pages/homePage/HomePage';
 import ShopPage from '../../pages/shop/ShopPage';
 import SignFormPage from '../../pages/sign-form/SignFormPage'
 import Checkout from '../../pages/checkout/Checkout'
+import Contact from '../../pages/contact/Contact'
 
 const Routes = withRouter(({ location, currentUser }) => {
   return (
@@ -13,6 +14,7 @@ const Routes = withRouter(({ location, currentUser }) => {
       <Route path='/' exact component={HomePage} key='HomePage' />
       <Route path='/shop' component={ShopPage} key='ShopPage' />
       <Route exact path='/checkout' component={Checkout} key='Checkout' />
+      <Route exact path='/contact' component={Contact} key='Checkout' />
       <Route exact path='/signin' render={() => currentUser ? <Redirect to='/' /> : <SignFormPage />} key='SignFormPage' />
     </AnimatedSwitch>
   );

@@ -1,0 +1,118 @@
+ #contact{
+ 	position:relative;
+ 	width:90%;
+ 	padding:100px 3% 20px;
+ 	background:#fff;
+ 	color:#555;
+ 	margin:100px auto 50px;
+     border-radius:5px;
+     overflow: hidden;
+     @media screen and (max-width: 530px) {
+        margin: 0 auto;
+     }
+ }
+
+ #contact > #logo{
+ 	position:absolute;
+ 	left:65%;
+    top:64px;
+    width: 190px;
+ 	margin:-90px 0 0 -80px;
+ 	border-radius:50%;
+ 	color: orange;
+ 	text-align:center;
+ 	font-size:4.25em;
+     line-height:2em;
+
+     @media screen and (max-width: 530px) {
+        top: auto;
+        right: -84px;
+        left: auto;
+        bottom: -24px;
+        width: 290px;
+     }
+     
+     img {
+         width: 100%;
+     }
+ }
+
+ #contact > #title{
+ 	position:absolute;
+ 	width:200px;
+ 	top:0;
+ 	left:50%;
+ 	margin-left:-100px;
+ 	text-align:center;
+ 	padding:15px 5px 0;
+ 	color:#555;
+ 	font-size:2.5em;
+ }
+ #contact > #pre,
+ #contact > #post{
+ 	font-size:0.9em;
+ 	padding:5px 0;
+ 	text-align:justify;
+ }
+ #contact > #post{
+ 	display:none;
+ }
+
+ #contact #wrapper{
+ 	padding:5px 0;
+ }
+ #contact input:not([type=submit]),
+ #contact textarea{
+     display: block;
+     position: relative;
+     background: none;
+ 	padding:5px;
+ 	width:100%;
+ 	border:1px solid #ccc;
+ 	margin-bottom:20px;
+     box-sizing:border-box;
+     font-family: "Open Sans Condensed", sans-serif;
+ }
+ #contact textarea{
+ 	height:120px;
+     resize:none;
+     font-family: "Open Sans Condensed", sans-serif;
+ }
+ #contact label:before{
+ 	position:absolute;
+ 	width:30px;
+ 	height:29px;
+ 	text-align:center;
+ 	line-height:1.75em;
+ 	background:#f4f4f4;
+ 	color:#888;
+ 	margin:-50px 0 0 1px;
+ }
+
+ #contact #submit{
+ 	position:relative;
+ 	display:block;
+ 	width:250px;
+ 	height:45px;
+ 	margin:0 auto;
+ 	color:white;
+ 	text-shadow:0 1px 2px rgba(0, 0, 0, 0.25);
+ 	border:none;
+ }
+ #contact #submit i{
+ 	margin-right:5px;
+ }
+ #contact #submit:active{
+ 	top:1px;
+ 	outline:none;
+ 	/*box-shadow*/
+ 	box-shadow:none;
+ }
+
+ @media screen and (min-width: 660px){
+ 	#contact{
+ 		width:500px;
+ 		padding-left:20px;
+ 		padding-right:20px;
+     }
+}
